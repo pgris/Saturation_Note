@@ -1,0 +1,16 @@
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Ivezic} {et~al.}(2010){Ivezic}, {Jones}, \& {Lupton}}]{LSE40}
+{Ivezic}, Z., {Jones}, L., \& {Lupton}, R. 2010, LSE-40
+
+\bibitem[{{Lochner} {et~al.}(2018){Lochner}, {Scolnic}, {Awan}, {Regnault},
+  {Gris}, {Mandelbaum}, {Gawiser}, {Almoubayyed}, {Setzer}, {Huber}, {Graham},
+  {Hlo{\v z}ek}, {Biswas}, {Eifler}, {Rothchild}, {Allam}, {Blazek}, {Chang},
+  {Collett}, {Goobar}, {Hook}, {Jarvis}, {Jha}, {Kim}, {Marshall}, {McEwen},
+  {Moniez}, {Newman}, {Peiris}, {Petrushevska}, {Rhodes}, {Sevilla-Noarbe},
+  {Slosar}, {Suyu}, {Tyson}, \& {Yoachim}}]{2018arXiv181200515L}
+{Lochner}, M., {Scolnic}, D.~M., {Awan}, H., {et~al.} 2018, arXiv e-prints,
+  arXiv:1812.00515
+
+\end{thebibliography}
