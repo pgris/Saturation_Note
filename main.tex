@@ -95,34 +95,35 @@ A summary of the results obtained is given on Fig.\ref{fig:fracseeing} where the
 It is possible to estimate the magnitude corresponding to pixel saturation by convolving  outcomes of Sect. \ref{sec:psfflux} with LSST intrument model. The method is the following:  magnitude is converted to photoelectrons using telescope throughput and exposure time; for a set of seeing values, results of Fig. \ref{fig:fracseeing} are used to estimate the highest number of photoelectrons in one pixel; saturation appears when the number of photoelectrons is equal to full well capacity of LSST ccds. 
 
 \begin{figure}[htbp]
-%\begin{center}
-  \includegraphics[width=0.9\textwidth]{LSST_throughput.png}
+\begin{center}
+  \includegraphics[width=0.6\textwidth]{LSST_throughput.png}
   \caption{LSST baseline throughput curves. Transmission (color) curves for LSST bands and for the telescope (syst: lens+mirrors+filters) with or without atmosphere transmission.  Effects of atmospheric transmission with an airmass value of 1.2 are illustrated by the black line.}\label{fig:throughput}
-%\end{center}
+\end{center}
 \end{figure}
 
 \begin{figure}[htbp]
 \begin{center}
-  \includegraphics[width=0.9\textwidth]{flux_mag.png}
+  \includegraphics[width=0.6\textwidth]{flux_mag.png}
  \caption{Flux (in photoelectrons per second) as a function of magnitude for LSST throughput and airmass=1.2.}\label{fig:fluxmag}
 \end{center}
 \end{figure}
 
 %\footnote{Files used to estimate these curves are available on github:https://github.com/lsst/throughputs/baseline}
-LSST baseline throughput curves  are given on Fig. \ref{fig:throughput}. These transmission curves can be used to estimate fluxes as a function of magnitude (Fig. \ref{fig:fluxmag}). Saturated magnitude as a function of the seeing are drawn on Fig. \ref{fig:magsat} for two exposure times (15 s and 30 s) and two full well capacities (90k \pe and 120k \pe). The relation between magnitude for two configurations defined by two pairs (exposure time, full well) can be written:
-\begin{equation}
-\Delta m = m^a-m^b = -2.5 \times \log\left(\frac{fw^a\times T_{exp}^b}{fw^b \times T_{exp}^a}\right)
- \end{equation}
-where $fw$ is the full well capacity and $T_{exp}$ the exposure time. This relation is independent on the seeing and on the band. For the case we are considering (exposure times of 15 and 30 s, full wells of 90k and 120k \pe) this would correspond to  $\Delta m$ = -0.75 or $\Delta m$ = 0.31 if exposure time increases from 15 s to 30 s, or if the full well capacity increases from 90k \pe~to 120k \pe, respectivelly.
-
-
-
+LSST baseline throughput curves  are given on Fig. \ref{fig:throughput}. These transmission curves can be used to estimate fluxes as a function of magnitude (Fig. \ref{fig:fluxmag}). Saturated magnitude as a function of the seeing are drawn on Fig. \ref{fig:magsat} for two exposure times (15 s and 30 s) and two full well capacities (90k \pe and 120k \pe). As it could be anticipated, highest saturated magnitude decrease with seeing values and cover the range [15.3,16.4], [15.2,16.2] and [14.8,15.9] for g,r and i bands, respectively, and for a typical seeing value of 0.8\arcsec. 
 \begin{figure}[htbp]
 %\begin{center}
  \includegraphics[width=1.1\textwidth]{magsat.png}
  \caption{Saturated magnitude as a function of seeing in LSST for g, r and i bands. Two exposure times (15 s: full line; 30 s: dotted line) and two full well capacities (90k \pe: blue; 120k \pe: red) have been considered.}\label{fig:magsat}
 %\end{center}
 \end{figure}
+
+The relation between magnitude for two configurations defined by two pairs (exposure time, full well) can be written:
+\begin{equation}
+\Delta m_{sat} = m^a_{sat}-m^b_{sat} = -2.5 \times \log\left(\frac{fw^a\times T_{exp}^b}{fw^b \times T_{exp}^a}\right)
+ \end{equation}
+where $fw$ is the full well capacity and $T_{exp}$ the exposure time. This relation is independent on the seeing and on the band. For the case we are considering (exposure times of 15 and 30 s, full wells of 90k and 120k \pe) this would correspond to  $\Delta m_{sat}$ = -0.75 or $\Delta m_{sat}$ = 0.31 if exposure time increases from 15 s to 30 s, or if the full well capacity increases from 90k \pe~to 120k \pe, respectivelly.  Moving from (30 s, 90k \pe) to (15 s, 120k \pe) gives $\Delta m_{sat}$ = -1.06. 
+
+
 
 % ----------------------------------------------------------------------
 
