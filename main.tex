@@ -25,6 +25,13 @@
 %\newcommand{\arcsec}{{$^{''}$}}
 \newcommand{\pe}{{pe}}
 \newcommand{\pesec}{{pe.s$^{-1}$}}
+\newcommand{\phimax}{{\Phi_{max}$}}
+\newcommand{\opsim}{{\sc OpSim}}
+\newcommand{\sncosmo}{{\sc SNCosmo}}
+\newcommand{\redshift}{{$z$}}
+\newcommand{\snstretch}{{$x_{1}$}}
+\newcommand{\sncolor}{{$c$}}
+\newcommand{\daymax}{{$t_{0}$}}
 
 % ======================================================================
 
@@ -129,18 +136,44 @@ where $fw$ is the full well capacity and $T_{exp}$ the exposure time. This relat
 
 \section{Impact of saturation on type Ia supernovae light curves}
 \label{sec:sn_saturation}
-
+Assessing saturation effects on type Ia supernovae simulated light curves involves evaluating, for each single LC points, the highest value of the flux (\phimax) deposited in a pixel. Saturation occurs (meaning that the flux is unknown and that the corresponding LC points can not be used) when \phimax~exceeds the full well capacity of this pixel. We have used simulated distributions of the seeing parameters to remove saturated LC points of a set of supernovae simulated light curves. Saturation effects were  estimated from two parameters: Signal-to-Noise Ratio (SNR) of the light curves (per band) and error on the color parameter (estimated using Fisher matrices).
 
 \subsection{Seeing distributions}
+
+Seeing distributions extracted from a simulation(dubbed kraken\_2026) performed with the LSST Operations Simulator(\opsim)\cite{2017arXiv170804058L} simulation are displayed on Fig. \ref{fig:seeing_opsim} for ugrizy bands. Two types of seeings are available\footnote{These definitions are extracted from https://lsst-sims.github.io/sims\_ocs/tables/summaryallprops.html}:
+\begin{itemize}
+\item seeingFwhmGeom: “Geometrical” full-width at half-maximum, actual half width at maximum brightness. This can be used to represent the FWHM of a double Gaussian representing the physical width of a PSF.
+\item seeingFwhmEff: “Effective” full-width at half-maximum, typically ~15\% larger than seeingFwhmGeom. This can be used to calculate SNR for point sources, using seeingFwhmEff as the FWHM of a single Gaussian describing the PSF.
+\end{itemize}
+The range of seeings varies from 0.5\arcsec~to 2.5\arcsec~with median values between 0.72\arcsec~and 0.97\arcsec (see Tab. \ref{tab:medseeing}).
+
+\begin{table*}[!htbp]
+  \caption{Median seeing values from \opsim~run kraken\_2026.}\label{tab:medseeing}
+  \begin{center}
+    \begin{tabular}{lcccccc}
+      \hline
+      \hline
+      band & u & g &r &i &z &y \\
+      \hline
+      \hline
+      seeingFwhmGeom [\arcsec]  & 0.85 & 0.80 & 0.77 & 0.74 & 0.73 & 0.72 \\
+      seeingFwhmEff [\arcsec] & 0.97 & 0.91 & 0.87 & 0.84 & 0.82 & 0.81 \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \end{table}
+      
 
 \begin{figure}[htbp]
 \begin{center}
   \includegraphics[width=0.9\textwidth]{seeing_kraken_2026.png}
- \caption{Seeing distributions extracted from OpSim simulations dubbed as kraken\_2026.}\label{fig:seeing_opsim}
+ \caption{Seeing distributions extracted from \opsim~simulations dubbed as kraken\_2026.}\label{fig:seeing_opsim}
 \end{center}
 \end{figure}
 
 \subsection{\sne light curve simulations}
+Fluxes of type Ia supernovae have been simulated using \sncosmo\cite{2016ascl.soft11017B}, a python library for supernova cosmology. Four parameters are used to define a supernova: the redshift \redshift, the stretch \snstretch, the color \sncolor, and the time-of-zero-phase \daymax. 
+
 
 \begin{figure}[htbp]
 \begin{center}
