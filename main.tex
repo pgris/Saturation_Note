@@ -14,6 +14,7 @@
 \usepackage{lsstdesc_macros}
 
 \usepackage{graphicx,subfigure}
+\usepackage[titletoc]{appendix}
 %\usepackage{subcaption} 
 \graphicspath{{./}{./figures/}}
 \bibliographystyle{apj}
@@ -33,6 +34,22 @@
 \newcommand{\sncolor}{{$c$}}
 \newcommand{\daymax}{{$t_{0}$}}
 
+\renewcommand\appendix{\par
+  \setcounter{section}{0}
+  \setcounter{subsection}{0}
+  \setcounter{figure}{0}
+  \setcounter{table}{0}
+  \renewcommand\thesection{Appendix} %\Alph{section}}
+  \renewcommand\thefigure{\Alph{section}\arabic{figure}}
+  \renewcommand\thetable{\Alph{section}\arabic{table}}
+}
+
+\newcommand*\appendixwithtoc{{\bf \Huge Appendix}
+  \cleardoublepage
+  \appendix
+  \addtocontents{toc}{\protect}%\StartAppendixEntries}
+  %\listofatoc
+}
 % ======================================================================
 
 \begin{document}
@@ -178,29 +195,12 @@ Fluxes of type Ia supernovae have been simulated using \sncosmo~\cite{2016ascl.s
 \item (\snstretch,\sncolor) = (0.0,0.0) : medium supernova
  \item (\snstretch,\sncolor) = (2.0,-0.2) : bright supernova
 \end{itemize}
-We have simulated observations in g,r,i bands with the following criteria:  regular cadence of three days (one measurement per band each day of observation shifted by ten minutes between bands), season length equal to 160 days, and \daymax = daymin+40*(1+z) where daymin stands for MJD of the first day of observation, airmass equal to 1.2. Five-sigma depth values considered (24.58,24.22,23.65 for g,r,i bands, respectively) correspond to median values given by kraken\_2026.  Two pairs of (exposure time, number of exposures) were considered: (15,2) and (30,1), corresponding to the snaps/no snaps scenarios.  We have used LSST baseline throughput curves (Fig. \ref{fig:throughput}) to estimate the fluxes measured by the telescope.
+Observing conditions (seeing and five-sigma depth) may have a non negligeable impact on LC points detections and correlations (seeing/five-sigma depth, and  seeing between observations) may be important. We have thus decided to use seeing and five-sigma depth distributions extracted from mean daily values (per band) from kraken\_2026.\par
+We have simulated observations in g,r,i bands with the following criteria:  regular cadence of three days (one measurement per band each day of observation shifted by ten minutes between bands); \daymax $\in$ [daymin+20*(1+z),daymax-40*(1+z)] (step: one day) where daymin(daymax)  stands for MJD of the first(last)  day of a year of observations (ten years have been simulated); $z~\in$[0.01,0.1] (step: 0.01); airmass equal to 1.2. \par
+Two pairs of (exposure time, number of exposures) were considered: (15,2) and (30,1), corresponding to the snaps/no snaps scenarios.  We have used LSST baseline throughput curves (Fig. \ref{fig:throughput}) to estimate the fluxes measured by the telescope.
 
-\begin{figure}[htbp]
-\begin{center}
-  \includegraphics[width=0.9\textwidth]{LC_faint.png}
- \caption{Magnitude as a function of time and redshift for a faint type Ia supernovae and for g (top), r(middle) and i (bottom) bands.}\label{fig:lcfaint}
-\end{center}
-\end{figure}
 
-\begin{figure}[htbp]
-\begin{center}
-  \includegraphics[width=0.9\textwidth]{LC_medium.png}
- \caption{Magnitude as a function of time and redshift for a medium type Ia supernovae and for g (top), r(middle) and i (bottom) bands.}\label{fig:lcmedium}
-\end{center}
-\end{figure}
-
-\begin{figure}[htbp]
-\begin{center}
-  \includegraphics[width=0.9\textwidth]{LC_bright.png}
- \caption{Magnitude as a function of time and redshift for a bright type Ia supernovae and for g (top), r(middle) and i (bottom) bands.}\label{fig:lcbright}
-\end{center}
-\end{figure}
-Estimated magnitudes are given on Figs. \ref{fig:lcfaint},\ref{fig:lcmedium},\ref{fig:lcbright} for a faint, medium, and bight type Ia supernova, respectively. Minimal magnitudes are summarized in Tab. \ref{tab:minimag} and range from 14-15 (z$\sim$0.01, bright SN) up to $\sim$ 18 (z$\sim$0.05, faint SN). 
+Estimated magnitudes are given on Figs. \ref{fig:lcfaint},\ref{fig:lcmedium},\ref{fig:lcbright} for a faint, medium, and bright type Ia supernova, respectively. Minimal magnitudes are summarized in Tab. \ref{tab:minimag} and range from 14-15 (z$\sim$0.01, bright SN) up to $\sim$ 18 (z$\sim$0.05, faint SN). 
 
 \begin{table}[!htbp]
   \caption{Minimal magnitudes as a function of redshift for faint, medium and bright type Ia supernovae.}\label{tab:minimag}
@@ -219,7 +219,9 @@ Estimated magnitudes are given on Figs. \ref{fig:lcfaint},\ref{fig:lcmedium},\re
     \end{tabular}
   \end{center}
   \end{table}
-      
+
+Figure \ref{fig:method} illustrate the method we have adopted to study saturation impact on \sne~light curves. To every single simulated light curve point (in pe/sec - first row) correspond a seeing (second row). According to the results exposed in Fig. \ref{fig:fracseeing} we estimate the highest fraction of energy deposited in a single pixel as a function of the seeing (third row). These factors are combined with the exposure time and  light curve points to estimate the highest signal (in pe) detected by a single pixel (fourth row). LC points with a flux higher than the chosen full well (here 90kpe) are not considered.
+
 \subsection{Impact on Signal-to-Noise Ratio}
 
 \subsection{Impact on $\sigma_C$}
@@ -255,7 +257,11 @@ Estimated magnitudes are given on Figs. \ref{fig:lcfaint},\ref{fig:lcmedium},\re
 
 % Include both collaboration papers and external citations:
 \bibliography{main,lsstdesc}
+\clearpage
 
+\appendixwithtoc
+
+\input appendix
 \end{document}
 
 % ======================================================================
