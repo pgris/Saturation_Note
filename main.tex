@@ -15,6 +15,7 @@
 
 \usepackage{graphicx,subfigure}
 \usepackage[titletoc]{appendix}
+%\usepackage{mathtools}
 %\usepackage{subcaption} 
 \graphicspath{{./}{./figures/}}
 \bibliographystyle{apj}
@@ -220,9 +221,15 @@ Estimated magnitudes are given on Figs. \ref{fig:lcfaint},\ref{fig:lcmedium},\re
   \end{center}
   \end{table}
 
-Figure \ref{fig:method} illustrate the method we have adopted to study saturation impact on \sne~light curves. To every single simulated light curve point (in pe/sec - first row) correspond a seeing (second row). According to the results exposed in Fig. \ref{fig:fracseeing} we estimate the highest fraction of energy deposited in a single pixel as a function of the seeing (third row). These factors are combined with the exposure time and  light curve points to estimate the highest signal (in pe) detected by a single pixel (fourth row). LC points with a flux higher than the chosen full well (here 90kpe) are not considered.
+Figure \ref{fig:method} illustrate the method we have adopted to study saturation impact on \sne~light curves. To every single simulated light curve point (in pe/sec - first row) correspond a seeing (second row). According to the results exposed in Fig. \ref{fig:fracseeing} we estimate the highest fraction of energy deposited in a single pixel as a function of the seeing (third row). These factors are combined with the exposure time and  light curve points to estimate the highest signal (in pe) detected by a single pixel (fourth row). LC points with a flux higher than the chosen full well (here 90kpe) are not considered.\par
+We could also have used  magnitudes of Fig. \ref{fig:magsat} to remove saturated LC points (seeing dependance). We have checked that both methods gave exactly the same results (internal check). 
 
 \subsection{Impact on Signal-to-Noise Ratio}
+The Signal-to-Noise Ratio is defined by band:
+\begin{equation}
+ SNR_{band} = \frac{\displaystyle \sum_{i=0}^{n}  \phi}{\sqrt{\displaystyle \sum_{i=0}^{n}  \sigma^2}}
+\end{equation}
+where the sums run over light curve points. (no SNR selection has been applied on these points). We have estimated SNR for the simulated light curve after application of the above-mentioned method to remove saturated points. 
 
 \subsection{Impact on $\sigma_C$}
 
