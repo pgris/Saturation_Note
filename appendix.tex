@@ -23,12 +23,50 @@
 \end{center}
 \end{figure}
 
+\section{Illustration of the method}
 \begin{figure}[htbp]
 \begin{center}
-  \includegraphics[width=0.9\textwidth]{procedure.png}
- \caption{Illustration of the method used to estimate saturation Effects. To each LC simulated point (first row) corresponds a seeing (second row) from which a factor corresponding to the highest fraction of energy deposited in a pixel is estimated (third row). We multiply this factor by the exposure time (here 15s) and the flux to estimate (fourth row) the highest signal deposited (in pe) in a pixel. A comparison with a chosen full well (red dotted line; 90 kpe) enables us to remove LC points corresponding to saturation.}\label{fig:method}
+  \includegraphics[width=0.8\textwidth]{procedure.png}
+ \caption{Illustration of the method used to estimate saturation Effects. To each LC simulated point (first row) corresponds a seeing (second row) from which a factor corresponding to the highest fraction of energy deposited in a pixel is estimated (third row). We multiply this factor by the exposure time (here 15s) and the flux to estimate (fourth row) the highest signal deposited (in pe) in a pixel.  LC points corresponding to saturation are removed if their fluxes are greater or equal the ccd full well ((red dotted line; 90 kpe).}\label{fig:method}
+\end{center}
+\end{figure}
+
+\section{Saturation effects on Signal-to-Noise Ratio}
+
+
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{SNR_faint.png}
+ \caption{Saturation effect on Signal-to-Noise Ratio for a faint \sne. SNR (normalized to SNR values estimated without saturation included) variations as a function of the redshift are given for gri bands and four (exposure time, full well) configurations: (15s, 90k \pe) (top left),  (15s, 120k \pe) (top right), (30s, 90k \pe) (bottom left),  (30s, 120k \pe) (bottom right),}\label{fig:snrfaint}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{SNR_bright.png}
+ \caption{Saturation effect on Signal-to-Noise Ratio for a bright \sne. SNR (normalized to SNR values estimated without saturation included) variations as a function of the redshift are given for gri bands and four (exposure time, full well) configurations: (15s, 90k \pe) (top left),  (15s, 120k \pe) (top right), (30s, 90k \pe) (bottom left),  (30s, 120k \pe) (bottom right),}\label{fig:snrbright}
+\end{center}
+\end{figure}
+
+\section{Saturation effects on \colorerr}
+
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{sigmac_faint.png}
+ \caption{Saturation effect on \colorerr~for a faint \sne. \colorerr~variations as a function of the redshift are given for gri bands and four (exposure time, full well) configurations: (15s, 90k \pe) (top left),  (15s, 120k \pe) (top right), (30s, 90k \pe) (bottom left),  (30s, 120k \pe) (bottom right).}\label{fig:sigmafaint}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{sigmac_bright.png}
+ \caption{Saturation effect on \colorerr~for a bright \sne. \colorerr~variations as a function of the redshift are given for gri bands and four (exposure time, full well) configurations: (15s, 90k \pe) (top left),  (15s, 120k \pe) (top right), (30s, 90k \pe) (bottom left),  (30s, 120k \pe) (bottom right).}\label{fig:sigmabright}
 \end{center}
 \end{figure}
 
 
+
 \end{appendices}
+
+
+

@@ -35,6 +35,7 @@
 \newcommand{\sncolor}{{$c$}}
 \newcommand{\daymax}{{$t_{0}$}}
 \newcommand{\degsq}{deg$^2$}
+\newcommand{\colorerr}{{$\sigma_C$}}
 
 \renewcommand\appendix{\par
   \setcounter{section}{0}
@@ -62,7 +63,7 @@
 
 \begin{abstract}
 
-  Write abstract here.
+  Saturation phenomena occuring in all ccds affect flux measurements of nearby supernovae and are governed by four parameters: the flux of the point-like source, the seeing (in the Point-Spread-Function), the exposure time, and the full well of the ccds. A study to assess impacts of these parameters on supernovae light curve points is presented. Saturation effects up to z$\sim$ 0.05 for bright supernovae are observed and the $r$-band is the most affected. During the course of this study we have estimated reference curves (pixel flux distribution or saturated magnitudes as a function of the seeing) that may be used to include saturation effects in simulations. 
 
 \end{abstract}
 
@@ -80,7 +81,7 @@ While LSST observing strategy is not finalized yet, recent studies \cite{2018arX
 Very-low z ($z \lesssim 0.05$) \sne~are rare (about 1500 \sne~are expected to occur during 10 seasons of 180 days over 18000 \degsq) but quite luminous. The peak magnitude may be lower than 15 (g band) for a typical \sne with $z\sim 0.01$ which corresponds to a flux of more than 5.5 $10^5$ photoelectrons (\pe) per second. The total number of photoelectrons collected with 15 s and 30 s exposures would be of 8.25 $ 10^{6}$ and 1.6 $ 10^{6}$ respectivelly.  These numbers exceed the expected full well capacity (90 ke) of LSST ccds. This would mean that, depending on the flux distribution over the pixels, some of \sne~fluxes may be unknown because of saturation effects. \par
 We may identify four parameters impacting the total number of photoelectrons collected per exposure: the flux of the point-like source, the seeing (rules the flux distribution in the pixels), the full well capacity of the ccds (defines the saturation limit) and the time of exposure. In the current baseline ({\it snaps} scenario) LSST will take data as pairs of back-to-back, 15-second exposures to aid in cosmic-ray rejection. It may be possible to reduce overheads (by about 7\%) by moving to one exposure of 30s ({\it no snap} scenario). Other configurations (such as two snaps with distinct time of exposure like 10s-20s) could also be considered. In a recent report the LSST Science Advisory Commitee (SAC) has suggested use as default single 30-second exposures\footnote{This report is available at this url:https://project.lsst.org/groups/sac/meetings.}.\par
 
-The purpose of this note is to study saturation effects on \sne~light curves. The first step involves estimating the flux distribution function as a function of the seeing for a set of Point Spread Function (PSF) models. The flux of a point-like source is spread over a set of pixels and the flux fraction of the pixel with the larger signal may be convolved with the telescope throughputs to evaluate magnitude corresponding to saturation (second step). The results depend on seeing, exposure time and full well of the ccd. Results obtained in the first part are applied to \sne~light curves in a third step. Impact of saturation is estimated using the Signal-to-Noise Ratio of the measured fluxes and $\sigma_C$, the error on the color parameter of \sne. Conclusions of this study are drawn in a last part. 
+The purpose of this note is to study saturation effects on \sne~light curves. The first step involves estimating the flux distribution function as a function of the seeing for a set of Point Spread Function (PSF) models. The flux of a point-like source is spread over a set of pixels and the flux fraction of the pixel with the larger signal may be convolved with the telescope throughputs to evaluate magnitude corresponding to saturation (second step). The results depend on seeing, exposure time and full well of the ccd. Results obtained in the first part are applied to \sne~light curves in a third step. Impact of saturation is estimated using the Signal-to-Noise Ratio of the measured fluxes and \colorerr, the error on the color parameter of \sne. Conclusions of this study are drawn in a last part. 
 
 % ----------------------------------------------------------------------
 
@@ -157,7 +158,7 @@ where $fw$ is the full well capacity and $T_{exp}$ the exposure time. This relat
 
 \section{Impact of saturation on type Ia supernovae light curves}
 \label{sec:sn_saturation}
-Assessing saturation effects on type Ia supernovae simulated light curves involves evaluating, for each single LC points, the highest value of the flux (\phimax) deposited in a pixel. Saturation occurs (meaning that the flux is unknown and that the corresponding LC points can not be used) when \phimax~exceeds the full well capacity of this pixel. We have used simulated distributions of the seeing parameters to remove saturated LC points of a set of supernovae simulated light curves. Two metrics are used to assess staturation effects: Signal-to-Noise Ratio (SNR) of the light curves (per band) and the error on the color parameter.
+Assessing saturation effects on type Ia supernovae simulated light curves involves evaluating, for each single LC points, the highest value of the flux (\phimax) deposited in a pixel. Saturation occurs (meaning that the flux is unknown and that the corresponding LC points can not be used) when \phimax~exceeds the full well capacity of this pixel. We have used simulated distributions of the seeing parameters to remove saturated LC points of a set of supernovae simulated light curves. Two metrics are used to assess staturation effects: Signal-to-Noise Ratio (SNR) of the light curves (per band) and the error on the color parameter \colorerr.
 
 \subsection{Seeing distributions}
 
@@ -232,24 +233,24 @@ The Signal-to-Noise Ratio is defined by band:
 \begin{equation}
  SNR_{band} = \frac{\displaystyle \sum_{i=0}^{n}  \phi}{\sqrt{\displaystyle \sum_{i=0}^{n}  \sigma^2}}
 \end{equation}
-where the sums run over light curve points. (no SNR selection has been applied on these points). We have estimated SNR for the simulated light curve after application of the above-mentioned method to remove saturated points. 
+where the sums run over light curve points. (no SNR selection has been applied on these points). We have estimated SNR for the simulated light curve after application of the above-mentioned method to remove saturated points. We have normalized the results to the SNR estimated without saturation effects. 
 
 \begin{figure}[htbp]
 \begin{center}
-  \includegraphics[width=0.8\textwidth]{SNR_medium_2_15.png}
-  \includegraphics[width=0.8\textwidth]{SNR_medium_1_30.png}
- \caption{Flux (in photoelectrons per second) as a function of magnitude for LSST throughput and airmass=1.2.}\label{fig:snrimpact}
+  \includegraphics[width=0.9\textwidth]{SNR_medium.png}
+ \caption{Saturation effect on Signal-to-Noise Ratio for a medium \sne. SNR (normalized to SNR values estimated without saturation included) variations as a function of the redshift are given for gri bands and four (exposure time, full well) configurations: (15s, 90k \pe) (top left),  (15s, 120k \pe) (top right), (30s, 90k \pe) (bottom left),  (30s, 120k \pe) (bottom right).}\label{fig:snrmedium}
 \end{center}
 \end{figure}
 
+Typical results for a medium supernova are displayed on Fig. \ref{fig:snrmedium} for four configurations in the (exposure time, full well) space parameters (results for faint and bright supernovae are on Figs. \ref{fig:snrfaint} and  \ref{fig:snrbright}, respectively). As expected highest variations occur for the (exposure time, full well)=(30s,90k \pe) scenario where SNR decrease of up to more than 40\% for z$\sim$ 0.01. 
 
-\subsection{Impact on $\sigma_C$}
+\subsection{Impact on \colorerr}
 
+The error on the color parameter of the \sne.
 \begin{figure}[htbp]
 \begin{center}
-  \includegraphics[width=0.8\textwidth]{sigmac_medium_2_15.png}
-  \includegraphics[width=0.8\textwidth]{sigmac_medium_1_30.png}
- \caption{Flux (in photoelectrons per second) as a function of magnitude for LSST throughput and airmass=1.2.}\label{fig:sigmacimpact}
+  \includegraphics[width=0.9\textwidth]{sigmac_medium.png}
+ \caption{Saturation effect on \colorerr~for a medium \sne. \colorerr~variations as a function of the redshift are given for gri bands and four (exposure time, full well) configurations: (15s, 90k \pe) (top left),  (15s, 120k \pe) (top right), (30s, 90k \pe) (bottom left),  (30s, 120k \pe) (bottom right).}\label{fig:sigmamedium}
 \end{center}
 \end{figure}
 
