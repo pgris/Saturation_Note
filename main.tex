@@ -1,4 +1,4 @@
-\RequirePackage{docswitch}
+ \RequirePackage{docswitch}
 % \flag is set by the user, through the makefile:
 %    make note
 %    make apj
@@ -40,6 +40,7 @@
 \newcommand{\daymax}{{$t_{0}$}}
 \newcommand{\degsq}{deg$^2$}
 \newcommand{\colorerr}{{$\sigma_C$}}
+\newcommand{\deltat}{{$\Delta_{t}$}}
 
 \renewcommand\appendix{\par
   \setcounter{section}{0}
@@ -60,6 +61,7 @@
 % ======================================================================
 \linenumbers
 \begin{document}
+\tableofcontents
 
 \title{Snaps/no snaps: \\ saturation effects on supernovae in LSST}
 
@@ -67,7 +69,7 @@
 
 \begin{abstract}
 
-  Saturation phenomena occuring in all ccds affect flux measurements of nearby supernovae. A study to assess impacts of four parameters - point-like source flux, seeing (Point-Spread-Function), exposure time, and full well of the ccd- on supernovae light curve points is presented. Saturation effects up to z$\sim$ 0.05 for bright supernovae are observed and the $r$-band is the most affected. During the course of this study we have estimated reference curves (pixel flux distribution or saturated magnitudes as a function of the seeing) that could be used to include saturation effects in simulations. 
+  Saturation phenomena occuring in all ccds affect flux measurements of nearby supernovae. A study to assess impacts of four parameters - point-like source flux, seeing (Point-Spread-Function), exposure time, and full well of the ccd - on supernovae light curve points is presented. Saturation effects up to z$\sim$ 0.05 for bright supernovae are observed and the $r$-band is the most affected. During the course of this study we have estimated reference curves (pixel flux distribution or saturated magnitudes as a function of the seeing) that could be used to include saturation effects in simulations. 
 
 \end{abstract}
 
@@ -82,7 +84,7 @@
 \section{Introduction}
 \label{sec:intro}
 While LSST observing strategy is not finalized yet, recent studies \cite{2018arXiv181200515L} have shown that it may be possible to observe a large sample of well-measured type Ia supernovae (\sne) up to a redshift of $z\sim 0.3-0.4$ in the Wide-Fast-Deep (WFD) survey. The main requirements on the cadence - typically few days for ($g,r,i$) bands with minimal inter-night gap variations - to achieve this result could be fulfilled by a rolling cadence strategy and/or by an optimized cadencing of the sky. The collection of few hundreds of thousands \sne (ie typically ten \sne~per square-degree) after ten years would open up unprecedented new perspectives in terms of supernovae cosmology, from anisotropy studies (Hubble diagram) to peculiar velocity measurements.\par
-Very-low z ($z \lesssim 0.05$) \sne~are rare (about 1500 \sne~are expected to occur during 10 seasons of 180 days over 18000 \degsq) but quite luminous. The peak magnitude may be lower than 15 ($g$-band) for a typical \sne with $z\sim$ 0.01 which corresponds to a flux of more than 5.5 \textrm{$10^5$} photoelectrons (\pe) per second. The total number of photoelectrons collected with 15 s and 30 s exposures would be of 8.25 $ 10^{6}$ and 1.6 $ 10^{6}$ respectively.  These numbers exceed the expected full well capacity (90 ke) of LSST ccds. This would mean that, depending on the flux distribution over the pixels, some of \sne~fluxes may be unknown because of saturation effects. \par
+Very-low z ($z \lesssim 0.05$) \sne~are rare (about 1500 \sne~are expected to occur during 10 seasons of 180 days over 18000 \degsq) but quite luminous. The peak magnitude may be lower than 15 ($g$-band) for a typical \sne with $z\sim$ 0.01 which corresponds to a flux of more than 5.5 \textrm{$10^5$} photoelectrons (\pe) per second. The total number of photoelectrons collected with 15 s and 30 s exposures would be of 8.25 $ 10^{6}$ and 1.6 $ 10^{7}$ respectively.  These numbers exceed the expected full well capacity (90 ke) of LSST ccds. This would mean that, depending on the flux distribution over the pixels, some of \sne~fluxes may be unknown because of saturation effects. \par
 We may identify four parameters impacting the total number of photoelectrons collected per exposure: the flux of the point-like source, the seeing (rules the flux distribution in the pixels), the full well capacity of the ccds (defines the saturation limit) and the time of exposure. In the current baseline ({\it snaps} scenario) LSST will take data as pairs of back-to-back, 15-second exposures to aid in cosmic-ray rejection. It may be possible to reduce overheads (by about 7\%) by moving to one exposure of 30s ({\it no snap} scenario). Other configurations (such as two snaps with distinct time of exposure like 10s-20s) could also be considered. In a recent report the LSST Science Advisory Commitee (SAC) has suggested use as default single 30-second exposures\footnote{This report is available at this url:https://project.lsst.org/groups/sac/meetings.}.\par
 
 The purpose of this note is to study saturation effects on \sne~light curves. The first step involves estimating the flux distribution function as a function of the seeing for a set of Point Spread Function (PSF) models. The flux of a point-like source is spread over a set of pixels and the flux fraction of the pixel with the larger signal may be convolved with the telescope throughputs to evaluate magnitude corresponding to saturation (second step). The results depend on seeing, exposure time and full well of the ccd. Results obtained in the first part are applied to \sne~light curves in a third step. Impact of saturation is estimated using the flux distribution per band, the Signal-to-Noise Ratio of the measured fluxes and \colorerr, the error on the color parameter of \sne. Conclusions of this study are drawn in a last part. 
@@ -154,9 +156,24 @@ The relation between magnitudes for two configurations defined by two pairs (exp
 \begin{equation}
 \Delta m_{sat} = m^a_{sat}-m^b_{sat} = -2.5 \times \log\left(\frac{fw^a\times T_{exp}^b}{fw^b \times T_{exp}^a}\right)
  \end{equation}
-where $fw$ is the full well capacity and $T_{exp}$ the exposure time. This relation is independent on the seeing and on the band. For the case we are considering (exposure times of 15 and 30 s, full wells of 90k and 120k \pe) this would correspond to  $\Delta m_{sat}$ = -0.75  if exposure time increases from 15 s to 30 s. Increasing the full well capacity from 90k \pe~to 120k \pe~would give $\Delta m_{sat}$ = 0.31. Moving from (30 s, 90k \pe) to (15 s, 120k \pe) leads to $\Delta m_{sat}$ = -1.06. 
+where $fw$ is the full well capacity and $T_{exp}$ the exposure time. This relation is independent on the seeing and on the band. A comparison of the saturated magnitude is given on Tab. \ref{tab:satmagdiff}. The saturated magnitude increases by 0.75 if exposure time changes from 15 to 30s (full well: 90 \kpe). Increasing the full well to 120 k\pe allows to decrease the saturatd magnitude by 1.7. Balancing the increase in exposure time (from 15s to 30s) would request to double the full well value. 
 
-
+\begin{table}[!htbp]
+  \caption{Saturated magnitude difference wrt the default configuration (exposure time, full well) = (15s, 90 k\pe)}\label{tab:satmagdiff}
+  \begin{center}
+    \begin{tabular}{c|c|c}
+      \hline
+      \hline
+      Exposure time (s) & full well (k\pe) & $\Delta m_{sat} $\\
+      \hline
+      \hline
+      15  & 90 & -0.31\\
+      30 & 90 & +0.75\\
+      30 & 120 & +0.44\\
+      \hline
+    \end{tabular}
+  \end{center}
+  \end{table}
 
 % ----------------------------------------------------------------------
 
@@ -234,7 +251,7 @@ We could also have used  magnitudes of Fig. \ref{fig:magsat} to remove saturated
 
 \subsection{Saturation effects on \sne~light curves}
 
-\subsubsection{Impact on flux distribution per band}
+\subsubsection{Flux distribution per band}
 Flux fraction (per band) of \sne~shows linear variations as a function of the redshift (Fig. \ref{fig:fluxmedium} for medium \sne, Figs. \ref{fig:fluxfaint} and ,\ref{fig:fluxbright} for faint and bright SN) and apportionnements between filters depend on the type (faint, medium, or bright) of the supernova. About 42\% of the flux of a faint \sne~is collected in the r-band, 31-34\% in the g-band, and about 25-27\%  in the $i$-band. $g$ and $r$ contributions are of the same order (about 40\%) for a medium \sne, with a fraction of flux in the $i$-band of 20-22\%.  $g$-band flux fraction is dominant for a bright \sne (about 47-49\%), followed by $r$-band ($\sim$ 37\%) and $i$-band (15-17\%) contributions.
 
 Saturation effects are observed up to $z\sim$ 0.02, 0.03, and 0.05 for faint, medium, and bright \sne, respectively. Variations of flux distribution due to saturation may be quite complicated and depend on the type of \sne~and on the (exposure time,full well) configuration. Highest differences are observed at low redshifts (z$\sim$0.01-0.02) for the case (exposure time,full well)=(30s, 90k \pe) and for the bright \sne where $i$-band contribution dominates up to (z$\sim$0.025).
@@ -246,10 +263,10 @@ Saturation effects are observed up to $z\sim$ 0.02, 0.03, and 0.05 for faint, me
 \end{center}
 \end{figure}
 
-\subsubsection{Impact on Signal-to-Noise Ratio}
+\subsubsection{Signal-to-Noise Ratio}
 The Signal-to-Noise Ratio is defined by band:
 \begin{equation}
- SNR_{band} = \frac{\displaystyle \sum_{i=0}^{n}  \phi}{\sqrt{\displaystyle \sum_{i=0}^{n}  \sigma^2}}
+ SNR_{band} = \frac{\displaystyle \sum_{i=0}^{n}  \phi_{band}}{\sqrt{\displaystyle \sum_{i=0}^{n}  \sigma^2_{band}}}
 \end{equation}
 where the sums run over light curve points. (no SNR selection has been applied on these points). We have estimated SNR for the simulated light curve after application of the above-mentioned method to remove saturated points. We have normalized the results to the SNR estimated without saturation effects. 
 
@@ -262,21 +279,27 @@ where the sums run over light curve points. (no SNR selection has been applied o
 
 Typical results for a medium supernova are displayed on Fig. \ref{fig:snrmedium} for four configurations in the (exposure time, full well) space parameters (results for faint and bright supernovae are on Figs. \ref{fig:snrfaint} and  \ref{fig:snrbright}, respectively). As expected highest variations occur for the (exposure time, full well)=(30s,90k \pe) scenario where SNR decrease of up to more than 40\% for z$\sim$ 0.01. 
 
-\subsubsection{Impact on \colorerr}
+\subsubsection{Time of saturation}
 
-The error on the color parameter of the \sne~has been estimated using Fisher formalism. We have estimated flux derivatives with respect to supernovae parameters (\snx,\snstretch,\sncolor) so as to construct the following matrix:
+Early detection of supernovae is based on precise measurements of the rising light curves. Saturation effects degrade early detection (saturated LC points are not usefull for identification) and may be quantified by the difference in time \deltat~between the start of the LC rise (which we have identified as the time of the first LC point with $SNR \geq 5$) and the occurence of the first saturated LC point. The variation of  \deltat~as a function of the redshift is given on Fig. \ref{fig:deltatmedium} for a medium \sne. In the configuration (exposure time, full well) = (30s, 90 k\pe), saturation may occur in 5 to 6 days for $z ~0.01$.  \deltat~increases in a linear way as a function of redshift up to ~17.5 days for the $g$-band and $z~0.03$.
 
-$$
-F = 
-\begin{pmatrix}
-\displaystyle \sum_{i}  \frac{1}{\sigma_i^2}\frac{\partial\Phi}{\partial x_0} \frac{\partial\Phi}{\partial x_0} & \displaystyle \sum_i  \frac{1}{\sigma_i^2}\frac{\partial\Phi}{\partial x_0} \frac{\partial\Phi}{\partial x_1}& \displaystyle  \sum_i \frac{1}{\sigma_i^2}\frac{\partial\Phi}{\partial x_0} \frac{\partial\Phi}{\partial c}\\
-\displaystyle  \sum_i  \frac{1}{\sigma_i^2}\frac{\partial\Phi}{\partial x_0} \frac{\partial\Phi}{\partial x_1} & \displaystyle  \sum_i  \frac{1}{\sigma_i^2}\frac{\partial\Phi}{\partial x_1} \frac{\partial\Phi}{\partial x_1}& \displaystyle  \sum_i \frac{1}{\sigma_i^2}\frac{\partial\Phi}{\partial x_1} \frac{\partial\Phi}{\partial c}\\
-\displaystyle  \sum_i  \frac{1}{\sigma_i^2}\frac{\partial\Phi}{\partial x_0} \frac{\partial\Phi}{\partial c} & \displaystyle  \sum_i  \frac{1}{\sigma_i^2}\frac{\partial\Phi}{\partial x_1} \frac{\partial\Phi}{\partial x_c}& \displaystyle  \sum_i \frac{1}{\sigma_i^2}\frac{\partial\Phi}{\partial c} \frac{\partial\Phi}{\partial c}\\
-\end{pmatrix}
-$$
-where the sums run over light curve points with error $\sigma_i$. Diagonal terms of $F^{-1}$ are an estimate of $\frac{1}{\sigma_{x_0}^2}, \frac{1}{\sigma_{x_1}^2}, \frac{1}{\sigma_{c}^2}$.
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{DeltaT_medium.png}
+ \caption{Saturation effect on \colorerr~for a medium \sne. \colorerr~variations as a function of the redshift are given for $gri$ bands and four (exposure time, full well) configurations: (15s, 90k \pe) (top left),  (15s, 120k \pe) (top right), (30s, 90k \pe) (bottom left),  (30s, 120k \pe) (bottom right). Dotted lines correspond to median values if LC saturated points are removed from \colorerr~estimation. Full lines correspond to the case where all LC points are considered (median values).}\label{fig:deltatmedium}
+\end{center}
+\end{figure}
 
-Impacts of saturation on \colorerr~are summarized in Fig. \ref{fig:sigmamedium} for a medium \sne, and ind Figs. \ref{fig:sigmafaint} and \ref{fig:sigmabright} for faint and bright \sne, respectively. As expected variations tend to increase as $z$ decreases and are the most important for a bright \sne~with the configuration (exposure time, full well) = (30s, 90k \pe): \colorerr~is multiply by 13 and 2 for $z$ values of 0.01 and 0.02, respectively when saturated points are removed from \colorerr~estimations.
+\subsubsection{Distance modulus error}
+
+A Hubble diagram
+The assumption that supernovae with identical color, shape and galactic environment have on average the same intrinsic luminosity for all redshifts yields to  a standardized distance modulus:
+\begin{equation}
+  \mu =m_B*− M_B+\alpha \times \snstretch-\beta \times \sncolor)
+\end{equation}
+where $m_B^*$ corresponds to the observed peak magnitude in rest-frameB-band and $\alpha$,$\beta$ and $M_B$ are nuisance parameters. $\sigma_\mu$, the error on the distance modulus is evaluated  using \sne~parameter errors ($\sigma_\snstretch,\sigma_\sncolor,\sigma_{m_B}$) (estimated using Fisher formalism) with $\alpha$= 0.14 and $\beta=$ 3.1. 
+
+
 
 \begin{figure}[htbp]
 \begin{center}
