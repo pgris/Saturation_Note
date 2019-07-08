@@ -41,7 +41,7 @@
 \newcommand{\degsq}{deg$^2$}
 \newcommand{\colorerr}{{$\sigma_C$}}
 \newcommand{\deltat}{{$\Delta_{t}$}}
-
+\newcommand{\sigmu}{{$\sigma_\mu$}}
 \renewcommand\appendix{\par
   \setcounter{section}{0}
   \setcounter{subsection}{0}
@@ -272,7 +272,7 @@ where the sums run over light curve points. (no SNR selection has been applied o
 
 \begin{figure}[htbp]
 \begin{center}
-  \includegraphics[width=0.9\textwidth]{SNR_medium.png}
+  \includegraphics[width=0.9\textwidth]{SNR_medium_single_gaussian.png}
  \caption{Saturation effect on Signal-to-Noise Ratio for a medium \sne. SNR (normalized to SNR values estimated without saturation included) variations as a function of the redshift are given for $gri$ bands and four (exposure time, full well) configurations: (15s, 90k \pe) (top left),  (15s, 120k \pe) (top right), (30s, 90k \pe) (bottom left),  (30s, 120k \pe) (bottom right).}\label{fig:snrmedium}
 \end{center}
 \end{figure}
@@ -285,7 +285,7 @@ Early detection of supernovae is based on precise measurements of the rising lig
 
 \begin{figure}[htbp]
 \begin{center}
-  \includegraphics[width=0.9\textwidth]{DeltaT_medium.png}
+  \includegraphics[width=0.9\textwidth]{TimeSat_medium_single_gaussian.png}
  \caption{Saturation effect on \colorerr~for a medium \sne. \colorerr~variations as a function of the redshift are given for $gri$ bands and four (exposure time, full well) configurations: (15s, 90k \pe) (top left),  (15s, 120k \pe) (top right), (30s, 90k \pe) (bottom left),  (30s, 120k \pe) (bottom right). Dotted lines correspond to median values if LC saturated points are removed from \colorerr~estimation. Full lines correspond to the case where all LC points are considered (median values).}\label{fig:deltatmedium}
 \end{center}
 \end{figure}
@@ -303,8 +303,20 @@ where $m_B^*$ corresponds to the observed peak magnitude in rest-frameB-band and
 
 \begin{figure}[htbp]
 \begin{center}
-  \includegraphics[width=0.9\textwidth]{sigmac_medium.png}
- \caption{Saturation effect on \colorerr~for a medium \sne. \colorerr~variations as a function of the redshift are given for $gri$ bands and four (exposure time, full well) configurations: (15s, 90k \pe) (top left),  (15s, 120k \pe) (top right), (30s, 90k \pe) (bottom left),  (30s, 120k \pe) (bottom right). Dotted lines correspond to median values if LC saturated points are removed from \colorerr~estimation. Full lines correspond to the case where all LC points are considered (median values).}\label{fig:sigmamedium}
+  \includegraphics[width=0.9\textwidth]{Sigma_mu_medium_single_gaussian.png}
+ \caption{Saturation effect on \sigmu~for a medium \sne. \sigmu~variations as a function of the redshift are given for $gri$ bands and four (exposure time, full well) configurations: (15s, 90k \pe) (top left),  (15s, 120k \pe) (top right), (30s, 90k \pe) (bottom left),  (30s, 120k \pe) (bottom right). Dotted lines correspond to median values if LC saturated points are removed from \colorerr~estimation. Full lines correspond to the case where all LC points are considered (median values).}\label{fig:sigmamedium}
+\end{center}
+\end{figure}
+
+
+\subsubsection{Selection efficiency}
+
+$M_B$, the absolute magnitude of \sne~ in the B-band, is a key parameter in supernovae science: 
+
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{Effi_medium.png}
+ \caption{Saturation effect on \sigmu~for a medium \sne. \sigmu~variations as a function of the redshift are given for $gri$ bands and four (exposure time, full well) configurations: (15s, 90k \pe) (top left),  (15s, 120k \pe) (top right), (30s, 90k \pe) (bottom left),  (30s, 120k \pe) (bottom right). Dotted lines correspond to median values if LC saturated points are removed from \colorerr~estimation. Full lines correspond to the case where all LC points are considered (median values).}\label{fig:effimedium}
 \end{center}
 \end{figure}
 
